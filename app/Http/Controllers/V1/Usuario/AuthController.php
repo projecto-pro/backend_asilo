@@ -12,6 +12,8 @@ use Illuminate\Auth\Authenticatable;
 
 class AuthController extends ApiController
 {
+    private $controlador_principal = 'AuthController';
+
     use Authenticatable;
 
     public function __construct()
