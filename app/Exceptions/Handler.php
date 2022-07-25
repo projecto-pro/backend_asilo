@@ -86,7 +86,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof QueryException) {
-            return $this->errorResponse($exception->errorInfo, 422);
+            return $this->errorResponse($exception, 422);
         }
 
         if ($exception instanceof TokenMismatchException) {
