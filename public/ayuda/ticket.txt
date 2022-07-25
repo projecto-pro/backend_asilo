@@ -1,0 +1,114 @@
+    public function ticket(CompraVenta $compra_venta)
+    {
+        try {
+            if ($compra_venta->anulado) {
+                return $this->errorResponse("El número de documento {$compra_venta->codigo} se encuentra anulado, por lo tanto no puede imprimir el ticket.", 423);
+            }
+
+            $anio = date('Y');
+            $file = null;
+            if (Storage::disk('ticket')->exists("{$anio}/{$compra_venta->codigo}.pdf")) {
+                $file = Storage::disk('ticket')->get("{$anio}/{$compra_venta->codigo}.pdf");
+            } else {
+                $empresa = Empresa::findOrFail($compra_venta->empresas_id);
+
+                $qar = null;
+                if (Storage::disk('ticket')->exists("empresa.png")) {
+                    $qar = Storage::disk('ticket')->path("empresa.png");
+                } else {
+                    $img = QrCode::format('png')->size(150)->generate("Gracias por tu compra");
+                    Storage::disk('ticket')->put("empresa.png", $img);
+                    $qar = Storage::disk('ticket')->path("empresa.png");
+                }
+
+                $this->fpdf = new FPDF('P', 'mm', array(80, 180));
+                $this->fpdf->AddPage();
+
+                $image = Storage::disk('logo')->exists($empresa->logo) ? Storage::disk('logo')->path($empresa->logo) : null;
+
+                $comprobante = Movimiento::VENTA == $compra_venta->movimientos_id ? "Comprobante" : "Cotización";
+
+                // AUTOR
+                $this->fpdf->SetTitle(utf8_decode("{$comprobante} No.: {$compra_venta->codigo}"), true);
+                $this->fpdf->SetAuthor(utf8_decode($empresa->nombre), true);
+
+                // CABECERA
+                $this->fpdf->SetFont('Helvetica', '', 10);
+                /*!is_null($image) ? $this->fpdf->Image($image, 27, 4, 25, 0, 'PNG')  : null;
+                !is_null($image) ? $this->fpdf->Ln(15)  : null;*/
+                $this->fpdf->Cell(60, 4, utf8_decode($empresa->nombre), 0, 1, 'C');
+                $this->fpdf->SetFont('Helvetica', '', 7);
+                $this->fpdf->Cell(60, 4, utf8_decode("{$empresa->direccion}"), 0, 1, 'C');
+                $fecha = date('d/m/Y', strtotime($compra_venta->fecha));
+                $this->fpdf->SetFont('Helvetica', '', 6);
+                $this->fpdf->Cell(60, 4, utf8_decode("{$comprobante} No.: {$compra_venta->codigo}"), 0, 1, 'C');
+                $this->fpdf->Cell(60, 4, "Fecha.: {$fecha}", 0, 1, 'C');
+                $this->fpdf->SetFont('Helvetica', '', 4);
+
+                //FACTURA CLIENTE
+                $this->fpdf->Ln(2);
+                $this->fpdf->SetFont('Helvetica', '', 7);
+                $this->fpdf->Cell(60, 4, "NIT: {$compra_venta->nit}", 0, 1, 'L');
+                $this->fpdf->Ln(1);
+                $this->fpdf->MultiCell(60, 4, utf8_decode("Cliente: {$compra_venta->persona}"), 0, 'J');
+                $this->fpdf->Ln(1);
+                $this->fpdf->MultiCell(60, 4, utf8_decode("Dirección: {$compra_venta->direccion}"), 0, 'J');
+
+                // COLUMNAS
+                $this->fpdf->Ln(3);
+                $this->fpdf->SetFont('Helvetica', 'B', 6);
+                $this->fpdf->Cell(60, 0, '', 'T', 1);
+                $this->fpdf->Cell(30, 4, 'Articulo', 0);
+                $this->fpdf->Cell(5, 4, 'Ud', 0, 0, 'R');
+                $this->fpdf->Cell(10, 4, 'Precio', 0, 0, 'R');
+                $this->fpdf->Cell(15, 4, 'Total', 0, 0, 'R');
+                $this->fpdf->Ln(4);
+                $this->fpdf->Cell(60, 0, '', 'T');
+                $this->fpdf->Ln(0);
+
+                foreach ($compra_venta->detalle as $key => $value) {
+                    $producto = utf8_decode($value->nombre_producto) . " " . utf8_decode($value->asignar_presentaciones->presentaciones);
+                    $this->fpdf->SetFont('Helvetica', '', 5);
+                    $this->fpdf->MultiCell(30, 4, $producto, 0, 'L');
+                    $this->fpdf->Cell(35, -5, $value->cantidad_real, 0, 0, 'R');
+                    $this->fpdf->Cell(10, -5, number_format($value->precio, 2, '.', ','), 0, 0, 'R');
+                    $this->fpdf->Cell(15, -5, number_format($value->total, 2, '.', ','), 0, 0, 'R');
+                    $this->fpdf->Ln(3);
+                }
+                $this->fpdf->Cell(60, 0, '', 'T');
+                $this->fpdf->Ln(0);
+
+                // SUMATORIO DE LOS PRODUCTOS 
+                $this->fpdf->SetFont('Helvetica', '', 7);
+                $this->fpdf->Ln(3);
+                $this->fpdf->Cell(50, 10, 'TOTAL Q', 0, 0, 'R');
+                $this->fpdf->Cell(10, 10, number_format(($compra_venta->total), 2, '.', ','), 0, 0, 'R');
+
+                // FOOTER
+                $this->fpdf->SetY(-25);
+                is_null($qar) ? null : $this->fpdf->Image($qar, 20, 100, 40, 0, 'PNG');
+                $this->fpdf->SetFont('Helvetica', '', 4);
+                $this->fpdf->Cell(60, 0, utf8_decode('EL PERIODO DE ANULACIÓN'), 0, 1, 'C');
+                $this->fpdf->Ln(2);
+                $this->fpdf->Cell(60, 0, utf8_decode("SOLO PUEDE SER APLICADO EL {$fecha}"), 0, 1, 'C');
+                $this->fpdf->Ln(2);
+                $this->fpdf->SetFont('Arial', 'I', 4);
+                $this->fpdf->Cell(60, 0, utf8_decode("Página {$this->fpdf->PageNo()}"), 0, 1, 'C');
+
+                $ver = $this->fpdf->Output("{$compra_venta->codigo}.pdf", 's');
+                $save = Storage::disk('ticket')->put("{$anio}/{$compra_venta->codigo}.pdf", $ver);
+
+                if ($save) {
+                    $file = $ver;
+                } else {
+                    return $this->errorResponse("Problema al guardar el documento número {$compra_venta->codigo}.", 423);
+                }
+            }
+
+            $base64 = base64_encode($file);
+
+            return $this->successResponse(['data' => "El documento número {$compra_venta->codigo} fue generado para entregar como {$comprobante} de pago.", 'path' => "data:application/pdf;base64,{$base64}"]);
+        } catch (\Exception $e) {
+            $this->errorResponse("Error en la creación del ticket");
+        }
+    }

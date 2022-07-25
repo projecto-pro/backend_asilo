@@ -1,0 +1,2029 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentación realizado con Swagger, servicios funcionando con Laravel 8",
+        "description": "Proyecto para la comunicación REST del sistema de Inventarios",
+        "contact": {
+            "name": "Correo de contacto",
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8001/SISHRS/backend/public"
+        }
+    ],
+    "paths": {
+        "/service/rest/v1/catalogo/coin": {
+            "get": {
+                "tags": [
+                    "Coin"
+                ],
+                "summary": "Muestra todos los tipos de moneda registradas en la base de datos.",
+                "description": "Retorna un array de tipos de moneda.",
+                "operationId": "getCoins",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Coin"
+                ],
+                "summary": "Crear un nuevo tipo de moneda en el sistema.",
+                "description": "Retorna el objeto del tipo de moneda creado.",
+                "operationId": "postCoin",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/coin/{coin}": {
+            "put": {
+                "tags": [
+                    "Coin"
+                ],
+                "summary": "Actualizar el tipo de moneda seleccionado.",
+                "description": "Retorna el objeto del tipo de moneda actualizado.",
+                "operationId": "updateCoin",
+                "parameters": [
+                    {
+                        "name": "coin",
+                        "in": "path",
+                        "description": "ID del tipo de moneda para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Coin"
+                ],
+                "summary": "Eliminar el tipo de coin seleccionado.",
+                "description": "Retorna el objeto del tipo de coin eliminado.",
+                "operationId": "deleteCoin",
+                "parameters": [
+                    {
+                        "name": "coin",
+                        "in": "path",
+                        "description": "ID del tipo de coin para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/departamento": {
+            "get": {
+                "tags": [
+                    "Departamento"
+                ],
+                "summary": "Muestra todos los departamentos registrados en la base de datos.",
+                "description": "Retorna un array de departamentos.",
+                "operationId": "getDepartaments",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/movement": {
+            "get": {
+                "tags": [
+                    "Movement"
+                ],
+                "summary": "Muestra todos los movimientos registrados en la base de datos.",
+                "description": "Retorna un array de movimientos.",
+                "operationId": "getMovements",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/municipio": {
+            "get": {
+                "tags": [
+                    "Municipio"
+                ],
+                "summary": "Muestra todos los municipios registrados en la base de datos.",
+                "description": "Retorna un array de municipios.",
+                "operationId": "getMunicipalities",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/status": {
+            "get": {
+                "tags": [
+                    "Status"
+                ],
+                "summary": "Muestra todos los estados registrados en la base de datos.",
+                "description": "Retorna un array de estados.",
+                "operationId": "getStatus",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typebed": {
+            "get": {
+                "tags": [
+                    "Type Bed"
+                ],
+                "summary": "Muestra todos los tipos de cama registradas en la base de datos.",
+                "description": "Retorna un array de tipos de cama.",
+                "operationId": "getTypeBeds",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Type Bed"
+                ],
+                "summary": "Crear un nuevo tipo de cama en el sistema.",
+                "description": "Retorna el objeto del tipo de cama creado.",
+                "operationId": "postTypeBed",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typebed/{typebed}": {
+            "put": {
+                "tags": [
+                    "Type Bed"
+                ],
+                "summary": "Actualizar el tipo de cama seleccionado.",
+                "description": "Retorna el objeto del tipo de cama actualizado.",
+                "operationId": "updateTypeBed",
+                "parameters": [
+                    {
+                        "name": "typebed",
+                        "in": "path",
+                        "description": "ID del tipo de cama para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typebed/{typebed}   ": {
+            "delete": {
+                "tags": [
+                    "Type Bed"
+                ],
+                "summary": "Eliminar el tipo de cama seleccionado.",
+                "description": "Retorna el objeto del tipo de cama eliminado.",
+                "operationId": "deleteTypeBed",
+                "parameters": [
+                    {
+                        "name": "typebed",
+                        "in": "path",
+                        "description": "ID del tipo de cama para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typeroom": {
+            "get": {
+                "tags": [
+                    "Type Room"
+                ],
+                "summary": "Muestra todos los tipos de habitación registradas en la base de datos.",
+                "description": "Retorna un array de tipos de habitación.",
+                "operationId": "getTypeRooms",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Type Room"
+                ],
+                "summary": "Crear un nuevo tipo de habitación en el sistema.",
+                "description": "Retorna el objeto del tipo de habitación creado.",
+                "operationId": "postTypeRoom",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typeroom/{typeroom}": {
+            "put": {
+                "tags": [
+                    "Type Room"
+                ],
+                "summary": "Actualizar el tipo de habitación seleccionado.",
+                "description": "Retorna el objeto del tipo de habitación actualizado.",
+                "operationId": "updateTypeRoom",
+                "parameters": [
+                    {
+                        "name": "typeroom",
+                        "in": "path",
+                        "description": "ID del tipo de habitación para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/catalogo/typeroom/{typeroom}   ": {
+            "delete": {
+                "tags": [
+                    "Type Room"
+                ],
+                "summary": "Eliminar el tipo de habitación seleccionado.",
+                "description": "Retorna el objeto del tipo de habitación eliminado.",
+                "operationId": "deleteTypeRoom",
+                "parameters": [
+                    {
+                        "name": "typeroom",
+                        "in": "path",
+                        "description": "ID del tipo de habitación para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/binnacle_reservation/{binnacle_reservation}": {
+            "get": {
+                "tags": [
+                    "Binnacle Reservation"
+                ],
+                "summary": "Muestra todos los movimientos realizados en la reservacion seleccionada.",
+                "description": "Retorna un array de los movimientos realizados en la reservacion seleccionada.",
+                "operationId": "findBinnacleReservationbyId",
+                "parameters": [
+                    {
+                        "name": "binnacle_reservation",
+                        "in": "path",
+                        "description": "ID de la reservación a consultar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Binnacle Reservation"
+                ],
+                "summary": "Actualizar la fecha de reubicación de la reservación seleccionada.",
+                "description": "Retorna el objeto de la reubicación de fecha en la reservación.",
+                "operationId": "updateBinnacleReservation",
+                "parameters": [
+                    {
+                        "name": "binnacle_reservation",
+                        "in": "path",
+                        "description": "ID de la reservación para actualizar la fecha de reubicación.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Binnacle Reservation"
+                ],
+                "summary": "Cancelación de la reservación por parate del cliente.",
+                "description": "Retorna la reservación cancelada.",
+                "operationId": "deleteBinnacleReservation",
+                "parameters": [
+                    {
+                        "name": "binnacle_reservation",
+                        "in": "path",
+                        "description": "ID de la reservación a cancelar por el cliente.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/client": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Muestra todos los clientes registrados en la base de datos.",
+                "description": "Retorna un array de clientes.",
+                "operationId": "getClients",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Crear un nuevo cliente en el sistema.",
+                "description": "Retorna el objeto del cliente creado.",
+                "operationId": "postClient",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/client/{client}": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Muestra todas las reservaciones realizadas por el cliente seleccionado.",
+                "description": "Retorna un array de las reservaciones realizadas por el cliente seleccionado.",
+                "operationId": "findClientbyId",
+                "parameters": [
+                    {
+                        "name": "client",
+                        "in": "path",
+                        "description": "ID del cliente a consultar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Actualizar el cliente seleccionado.",
+                "description": "Retorna el objeto del cliente actualizado.",
+                "operationId": "updateClient",
+                "parameters": [
+                    {
+                        "name": "client",
+                        "in": "path",
+                        "description": "ID del cliente para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Eliminar el cliente seleccionado.",
+                "description": "Retorna el objeto del cliente eliminado.",
+                "operationId": "deleteClient",
+                "parameters": [
+                    {
+                        "name": "client",
+                        "in": "path",
+                        "description": "ID del cliente para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/client_phone/{client_phone}": {
+            "get": {
+                "tags": [
+                    "Client Phone"
+                ],
+                "summary": "Muestra todos los números de teléfono del cliente seleecionado.",
+                "description": "Retorna un array de los números de teléfono del cliente seleccionado.",
+                "operationId": "findClientPhonebyId",
+                "parameters": [
+                    {
+                        "name": "client_phone",
+                        "in": "path",
+                        "description": "ID del cliente a consultar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Client Phone"
+                ],
+                "summary": "Agregar un nuevo número de teléfono al cliente seleccionado.",
+                "description": "Retorna el objeto del cliente actualizado.",
+                "operationId": "updateClientPhone",
+                "parameters": [
+                    {
+                        "name": "client_phone",
+                        "in": "path",
+                        "description": "ID del cliente para agregar un nuevo número de teléfono",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Client Phone"
+                ],
+                "summary": "Eliminar el número de teléfono seleccionado.",
+                "description": "Retorna el objeto del número de teléfono eliminado.",
+                "operationId": "deleteClientPhone",
+                "parameters": [
+                    {
+                        "name": "client_phone",
+                        "in": "path",
+                        "description": "ID del número de teléfono para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/picture_room": {
+            "post": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Actualización masiva de las posiciones de las fotografías de la habitación seleccionada.",
+                "description": "Retorna un mensaje indicado el resultado del proceso.",
+                "operationId": "postPictureRoom",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/picture_room/{picture_room}": {
+            "get": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Muestra todas fotografías de la habitación seleccionada.",
+                "description": "Retorna un array de las fotografías de la habitación seleccionada.",
+                "operationId": "findPictureRoombyId",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la habitación a consultar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Agregar una nueva fotografía a la habitación seleccionada.",
+                "description": "Retorna el objeto de la habitación actualizada.",
+                "operationId": "updatePictureRoom",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la habitación para agregar nuevas fotografías.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Eliminar la fotografía seleccionada.",
+                "description": "Retorna el objeto de la fotografía eliminada.",
+                "operationId": "deletePictureRoom",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la fotografía para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/picture_room/view/{picture_room}": {
+            "get": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Actualización de estado de la vista de la fotografía seleccionada.",
+                "description": "Retorna el objeto de la fotografía actualizada.",
+                "operationId": "findPictureRoomViewbyId",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la fotografía a actualizar.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/picture_room/up/{picture_room}": {
+            "get": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Actualización de la posición de la fotografía seleccionada.",
+                "description": "Retorna el objeto de la fotografía actualizada.",
+                "operationId": "findPictureRoomUpbyId",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la fotografía a actualizar.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/picture_room/down/{picture_room}": {
+            "get": {
+                "tags": [
+                    "Picture Room"
+                ],
+                "summary": "Actualización de la posición de la fotografía seleccionada.",
+                "description": "Retorna el objeto de la fotografía actualizada.",
+                "operationId": "findPictureRoomDownbyId",
+                "parameters": [
+                    {
+                        "name": "picture_room",
+                        "in": "path",
+                        "description": "ID de la fotografía a actualizar.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/room": {
+            "get": {
+                "tags": [
+                    "Room"
+                ],
+                "summary": "Muestra todos las habitaciones registradas en la base de datos.",
+                "description": "Retorna un array de habitaciones.",
+                "operationId": "getRooms",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Room"
+                ],
+                "summary": "Crear una nueva habitación en el sistema.",
+                "description": "Retorna el objeto de la habitación creada.",
+                "operationId": "postRoom",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/principal/room/{room}": {
+            "put": {
+                "tags": [
+                    "Room"
+                ],
+                "summary": "Actualizar la habitación seleccionado.",
+                "description": "Retorna el objeto de la habitación actualizada.",
+                "operationId": "updateRoom",
+                "parameters": [
+                    {
+                        "name": "room",
+                        "in": "path",
+                        "description": "ID de la habitación para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Room"
+                ],
+                "summary": "Cambiar estado a la habitación seleccionada.",
+                "description": "Retorna el objeto de la habitación con nuevo estado.",
+                "operationId": "deleteRoom",
+                "parameters": [
+                    {
+                        "name": "room",
+                        "in": "path",
+                        "description": "ID de la habitación para cambiar de estado.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/auth/login": {
+            "post": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Verificación de credenciales de acceso del usuario.",
+                "description": "Retorna el objeto del usuario y el token.",
+                "operationId": "postLogin",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/auth/me": {
+            "get": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Muestra la información del usuario que se encuentra en sesión.",
+                "description": "Retorna un objeto del usuario en sesión.",
+                "operationId": "getUserSesión",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/auth/logout": {
+            "get": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Muestra la información del usuario que finalizará la sesión.",
+                "description": "Retorna un objeto del usuario que finalizó la sesión.",
+                "operationId": "getLogout",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/user": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Muestra todos los usuarios registrados en la base de datos.",
+                "description": "Retorna un array de usuarios.",
+                "operationId": "getUsers",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Crear un nuevo usuario en el sistema.",
+                "description": "Retorna el objeto del usuario creado.",
+                "operationId": "postUsers",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/user_password": {
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Cambiar la contraseña del usuario seleccionado.",
+                "description": "Retorna el objeto del usuario que cambio la contraseña.",
+                "operationId": "postUserPassword",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/user/{user}": {
+            "put": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Actualizar el usuario seleccionado.",
+                "description": "Retorna el objeto del usuario actualizado.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID del usuario para actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Eliminar o cambiar el estado del usuario seleccionado.",
+                "description": "Retorna el objeto del usuario eliminado.",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID del usuario para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/user_rol": {
+            "post": {
+                "tags": [
+                    "Usuario y Rol"
+                ],
+                "summary": "Asignar rol al usuario.",
+                "description": "Retorna el objeto del rol asignado.",
+                "operationId": "postUserRol",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/service/rest/v1/security/user_rol/{user_rol} ": {
+            "get": {
+                "tags": [
+                    "Usuario y Rol"
+                ],
+                "summary": "Muestra todos los roles asignados al usuario seleccionado.",
+                "description": "Retorna un array de roles del usuario seleccionado.",
+                "operationId": "findUserRolbyId",
+                "parameters": [
+                    {
+                        "name": "user_rol",
+                        "in": "path",
+                        "description": "ID del usuario para buscar los roles",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Usuario y Rol"
+                ],
+                "summary": "Eliminar el rol asignado al usuario seleccionado.",
+                "description": "Retorna el objeto del rol asignado al usuario eliminado.",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "user_rol",
+                        "in": "path",
+                        "description": "ID del rol para eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta correcta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "Permisos denegados"
+                    },
+                    "400": {
+                        "description": "Solicitud incorrecta"
+                    },
+                    "404": {
+                        "description": "Servicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
