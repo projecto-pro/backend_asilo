@@ -20,8 +20,7 @@ class ConsultaMedica extends Model
         'usuario_id', 'mes_id', 'atendido', 'anulado'
     ];
     protected $casts = [
-        'pagado' => 'boolean', 'atendido' => 'boolean', 'anulado' => 'boolean',
-        'fecha_hora' => 'date:d-m-Y', 'hora' => 'date:H:i:s'
+        'pagado' => 'boolean', 'atendido' => 'boolean', 'anulado' => 'boolean'
     ];
 
     public function solicitud_medica()

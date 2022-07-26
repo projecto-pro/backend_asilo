@@ -23,7 +23,6 @@ class FichaMedica extends Model
         'protegido_id', 'ingreso_asilo_id', 'contacto_id', 'solicitud_medica_id',
         'medico_tratante_id', 'usuario_id'
     ];
-    protected $casts = ['fecha_ingreso' => 'date:d-m-Y', 'hora_ingreso' => 'date:H:i:s', 'fecha_nacimiento' => 'date:d-m-Y'];
 
     public function protegido()
     {
