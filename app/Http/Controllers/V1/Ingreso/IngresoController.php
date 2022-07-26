@@ -64,7 +64,7 @@ class IngresoController extends ApiController
 
             $anio = date('Y');
             foreach (Mes::orderBy('id')->get() as $mes) {
-                $this->mesualidad($mes->id, $ingreso_asilo->id, $anio);
+                $this->mesualidad($mes->id, $ingreso_asilo->id, $anio, false, Auth::user()->id);
             }
 
             DB::commit();
