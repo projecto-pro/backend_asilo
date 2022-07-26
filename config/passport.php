@@ -59,7 +59,7 @@ return [
 
     'storage' => [
         'database' => [
-            'connection' => env('DB_CONNECTION_PASSPORT'),
+            'connection' => 'sqlsrv_principal',
         ],
     ],
 

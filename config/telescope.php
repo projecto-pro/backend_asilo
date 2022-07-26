@@ -46,7 +46,7 @@ return [
 
     'storage' => [
         'database' => [
-            'connection' => env('DB_CONNECTION_TELESCOPE'),
+            'connection' => 'sqlsrv_principal',
             'chunk' => 1000,
         ],
     ],

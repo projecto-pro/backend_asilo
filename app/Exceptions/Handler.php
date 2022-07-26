@@ -9,6 +9,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
+use Laravel\Passport\Exceptions\OAuthServerException;
 use Laravel\Passport\Exceptions\MissingScopeException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
