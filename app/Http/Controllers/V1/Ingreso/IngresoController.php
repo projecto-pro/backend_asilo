@@ -41,6 +41,7 @@ class IngresoController extends ApiController
     {
         try {
             DB::beginTransaction();
+            return $this->successResponse($request);
 
             $protegido = $this->protegido($request->paciente);
             $responsable = $this->persona($request->responsable);
