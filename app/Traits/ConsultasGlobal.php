@@ -180,9 +180,9 @@ trait ConsultasGlobal
         $protegido = Protegido::where('persona_id', $paciente->id)->first();
         if (is_null($protegido)) {
             $protegido = new Protegido();
-            $protegido->codigo = $this->generadorCodigo('P', count(Protegido::all()) + 1);
+            $protegido->codigo = $this->generadorCodigo('P', Protegido::count() + 1);
             $protegido->persona_id = $paciente->id;
-            $protegido->usuario_id = $this->usuario->id;
+            $protegido->usuario_id = Auth::user()->id;
         }
 
         $protegido->activo = true;
