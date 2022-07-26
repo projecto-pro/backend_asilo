@@ -19,7 +19,7 @@ class MensualidadController extends ApiController
     public function edit(IngresoAsilo $mensualidad)
     {
         try {
-            return $this->successResponse(Mensualidad::with('mes', 'usuario')->where('ingreso_asilo_id', $mensualidad->id)->get());
+            return $this->showAll(Mensualidad::with('mes', 'ingreso_asilo.protegido', 'usuario')->where('ingreso_asilo_id', $mensualidad->id)->get());
         } catch (\Exception $e) {
             $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@show");
             return $this->errorResponse('Error en el controlador');

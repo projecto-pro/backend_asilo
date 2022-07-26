@@ -140,7 +140,7 @@ class DatabaseSeeder extends Seeder
                 $recetar->total = $recetar->subtotal - $recetar->descuento_aplicado;
                 $recetar->cancelado = $simular_cancelado == 1;
                 $recetar->entregado = $simular_entregado == 1;
-                $recetar->protegido_id = $evolucion_medica->ficha_medica->protegido->id;
+                $recetar->protegido_id = $evolucion_medica->ficha_medica->protegido_id;
                 $recetar->evolucion_medica_id = $evolucion_medica->id;
                 $recetar->medicina_presentacion_id = $tratamiento->id;
                 $recetar->usuario_id = Usuario::all()->random()->id;

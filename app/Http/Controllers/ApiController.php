@@ -12,6 +12,6 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:passport');
+        $this->middleware('auth:passport'); //Es protección para que no puedan consultar sin estar logueado
     }
 }

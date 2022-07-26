@@ -94,7 +94,7 @@ Route::resource('laboratorio', 'Consulta\LaboratorioController')->only(['index',
 Route::resource('solicitud_medica', 'Consulta\SolicitudMedicaController')->only(['index', 'show', 'store', 'destroy']);
 
 //rutas para TratamientoController
-Route::resource('tratamiento', 'Consulta\TratamientoController')->only(['index', 'show', 'destroy']);
+Route::resource('tratamiento', 'Consulta\TratamientoController')->only(['index', 'edit', 'show', 'destroy']);
 
 //rutas para ExamenRealizadoController
 Route::resource('examen_realizado', 'Consulta\ExamenRealizadoController')->only(['store']);
