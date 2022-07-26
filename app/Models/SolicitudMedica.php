@@ -14,7 +14,7 @@ class SolicitudMedica extends Model
 
     protected $table = 'solicitud_medica';
     protected $fillable = ['fecha', 'motivo', 'ingreso_asilo_id', 'protegido_id', 'usuario_id'];
-    protected $casts = ['asignado' => 'boolean'];
+    protected $casts = ['asignado' => 'boolean', 'fecha' => 'dateTime:d-m-Y'];
 
     public function ingreso_asilo()
     {
