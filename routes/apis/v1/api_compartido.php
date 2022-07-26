@@ -52,6 +52,8 @@ Route::name('select.medico_select')->get('select/medico', 'Catalogo\SelectContro
 Route::name('select.ingreso_asilo_select')->get('select/ingreso_asilo', 'Catalogo\SelectController@ingreso_asilo_select');
 Route::name('select.antecedente_select')->get('select/antecedente', 'Catalogo\SelectController@antecedente_select');
 Route::name('select.consulta_medica_select')->get('select/consulta_medica', 'Catalogo\SelectController@consulta_medica_select');
+Route::name('select.entrega_medicamento_select')->get('select/entrega_medicamento', 'Catalogo\SelectController@entrega_medicamento_select');
+
 
 //rutas para PresentacionController
 Route::resource('presentacion', 'Catalogo\PresentacionController')->only(['store', 'destroy']);
