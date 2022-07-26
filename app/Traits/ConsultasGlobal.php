@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use App\Models\Log;
-use App\Models\Mes;
 use App\Models\Persona;
 use App\Models\RolMenu;
 use App\Models\Municipio;
@@ -22,13 +21,6 @@ use Illuminate\Support\Facades\Auth;
 trait ConsultasGlobal
 {
     use Utileria;
-
-    private $usuario;
-
-    public function __construct()
-    {
-        $this->usuario = Auth::user();
-    }
 
     protected function persona($request)
     {
@@ -167,7 +159,7 @@ trait ConsultasGlobal
         $persona->direcciones = $request->direcciones;
         $persona->departamento_id = Municipio::find($request->municipio_id['id'])->departamento_id;
         $persona->municipio_id = $request->municipio_id['id'];
-        $persona->usuario_id = $this->usuario->id;
+        $persona->usuario_id = Auth::user()->id;
         $persona->save();
 
         return $persona;
@@ -202,7 +194,7 @@ trait ConsultasGlobal
             $mesualidad->anio = $anio;
             $mesualidad->ingreso_asilo_id = $ingreso_asilo_id;
             $mesualidad->mes_id = $mes;
-            $mesualidad->usuario_id = is_null($this->usuario) ? $usuario_id : $this->usuario->id;
+            $mesualidad->usuario_id = is_null($this->usuario) ? $usuario_id : Auth::user()->id;
             $mesualidad->save();
         }
     }
@@ -238,7 +230,7 @@ trait ConsultasGlobal
         ) ? 0 : $this->usuario->cui;
         $insert->usuarios_id = is_null(
             $this->usuario
-        ) ? 0 : $this->usuario->id;
+        ) ? 0 : Auth::user()->id;
         $insert->save();
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Persona;
 use App\Models\Municipio;
 use App\Models\Departamento;
 use Illuminate\Database\Eloquent\Model;
