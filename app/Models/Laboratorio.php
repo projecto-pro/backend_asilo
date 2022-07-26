@@ -6,6 +6,7 @@ use App\Models\Examen;
 use App\Models\Usuario;
 use App\Models\Protegido;
 use App\Models\EvolucionMedica;
+use App\Models\ExamenRealizado;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

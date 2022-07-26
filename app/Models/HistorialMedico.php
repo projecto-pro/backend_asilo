@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Medico;
 use App\Models\FichaMedica;
 use App\Models\ConsultaMedica;
+use App\Models\EvolucionMedica;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

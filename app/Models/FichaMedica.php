@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use App\Models\Protegido;
 use App\Models\IngresoAsilo;
 use App\Models\SolicitudMedica;
+use App\Models\FichaMedicaAntecedente;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
