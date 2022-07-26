@@ -52,7 +52,7 @@ class ConsultaMedicaController extends ApiController
             $solicitud_medica = SolicitudMedica::find($request->id);
 
             $consulta_medica = new ConsultaMedica();
-            $consulta_medica->fecha_hora = $solicitud_medica->fecha;
+            $consulta_medica->fecha_hora = date('Y-m-d H:i:s', strtotime("{$solicitud_medica->fecha} {$request->hora}"));
             $consulta_medica->hora = $request->hora;
             $consulta_medica->subtotal = 0;
             $consulta_medica->descuento = 0;
