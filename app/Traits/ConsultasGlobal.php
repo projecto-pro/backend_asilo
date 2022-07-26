@@ -194,7 +194,7 @@ trait ConsultasGlobal
             $mesualidad->anio = $anio;
             $mesualidad->ingreso_asilo_id = $ingreso_asilo_id;
             $mesualidad->mes_id = $mes;
-            $mesualidad->usuario_id = is_null($this->usuario) ? $usuario_id : Auth::user()->id;
+            $mesualidad->usuario_id = is_null(Auth::user()) ? $usuario_id : Auth::user()->id;
             $mesualidad->save();
         }
     }
@@ -226,10 +226,10 @@ trait ConsultasGlobal
         $insert->descripcion = $excepcion;
         $insert->controlador = $controlador;
         $insert->usuario = is_null(
-            $this->usuario
-        ) ? 0 : $this->usuario->cui;
+            Auth::user()
+        ) ? 0 : Auth::user()->cui;
         $insert->usuarios_id = is_null(
-            $this->usuario
+            Auth::user()
         ) ? 0 : Auth::user()->id;
         $insert->save();
     }
