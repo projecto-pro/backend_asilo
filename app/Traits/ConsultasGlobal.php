@@ -144,6 +144,9 @@ trait ConsultasGlobal
             if ($value['padre'] > 0) {
                 $menu_id = $value['padre'];
             }
+            if ($menu_id == 0) {
+                $menu_id = $value['id'];
+            }
 
             RolMenu::firstOrCreate(['rol_id' => $rol_id, 'menu_id' => $menu_id]);
             RolMenu::firstOrCreate(['rol_id' => $rol_id, 'menu_id' => $value['id']]);
