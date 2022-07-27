@@ -13,6 +13,7 @@ class CajaChica extends Model
 
     protected $table = 'caja_chica';
     protected $fillable = ['monto', 'descripcion', 'fecha_hora', 'anio', 'mes_id', 'usuario_id'];
+    public $timestamps = false;
 
     public function mes()
     {

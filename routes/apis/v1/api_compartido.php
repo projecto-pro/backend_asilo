@@ -106,3 +106,6 @@ Route::resource('ficha_medica', 'FichaMedica\FichaMedicaController')->only(['sho
 
 //rutas para FichaMedicaAntecedenteController
 Route::resource('ficha_medica_antecedente', 'FichaMedica\FichaMedicaAntecedenteController')->only(['store', 'destroy']);
+
+//rutas para CajaChicaController
+Route::resource('caja_chica', 'Administracion\CajaChicaController')->only(['index', 'store', 'destroy']);

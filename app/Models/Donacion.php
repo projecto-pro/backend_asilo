@@ -14,6 +14,7 @@ class Donacion extends Model
 
     protected $table = 'donacion';
     protected $fillable = ['monto', 'fecha', 'anio', 'entidad_id', 'mes_id', 'usuario_id'];
+    public $timestamps = false;
 
     public function entidad()
     {

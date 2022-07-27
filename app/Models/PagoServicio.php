@@ -14,6 +14,7 @@ class PagoServicio extends Model
 
     protected $table = 'pago_servicio';
     protected $fillable = ['monto', 'fecha', 'anio', 'servicio_id', 'mes_id', 'usuario_id'];
+    public $timestamps = false;
 
     public function servicio()
     {
