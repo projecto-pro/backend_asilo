@@ -290,4 +290,23 @@ class SelectController extends ApiController
             return $this->errorResponse('Error en el controlador');
         }
     }
+
+    public function examen_realizado_select()
+    {
+        try {
+            $data = Protegido::whereExists(function ($query) {
+                $query->select(DB::raw(1))
+                    ->from('laboratorio')
+                    ->whereRaw('protegido.id = laboratorio.protegido_id')
+                    ->where('laboratorio.realizado', false);
+            })
+                ->orderBy('id')
+                ->get();
+
+            return $this->showAll($data);
+        } catch (\Exception $e) {
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@examen_realizado_select");
+            return $this->errorResponse('Error en el controlador');
+        }
+    }
 }

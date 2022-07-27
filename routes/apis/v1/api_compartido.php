@@ -57,6 +57,7 @@ Route::name('select.donacion_select')->get('select/donacion', 'Catalogo\SelectCo
 Route::name('select.entidad_select')->get('select/entidad', 'Catalogo\SelectController@entidad_select');
 Route::name('select.servicio_select')->get('select/servicio', 'Catalogo\SelectController@servicio_select');
 Route::name('select.anios_select')->get('select/anios', 'Catalogo\SelectController@anios_select');
+Route::name('select.examen_realizado_select')->get('select/examen_realizado', 'Catalogo\SelectController@examen_realizado_select');
 
 
 //rutas para PresentacionController
@@ -94,7 +95,7 @@ Route::resource('evolucion_medica', 'Consulta\EvolucionMedicaController')->only(
 Route::resource('historial_medico', 'Consulta\HistorialMedicoController')->only(['show', 'store', 'destroy']);
 
 //rutas para LaboratorioController
-Route::resource('laboratorio', 'Consulta\LaboratorioController')->only(['index', 'show', 'destroy']);
+Route::resource('laboratorio', 'Consulta\LaboratorioController')->only(['index', 'edit', 'show', 'destroy']);
 
 //rutas para SolicitudMedicaController
 Route::resource('solicitud_medica', 'Consulta\SolicitudMedicaController')->only(['index', 'show', 'store', 'destroy']);
