@@ -21,7 +21,7 @@ class CajaChicaController extends ApiController
         try {
             return $this->showAll(CajaChica::with('mes')->orderByDesc('id')->get());
         } catch (\Exception $e) {
-            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@store");
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@index");
             return $this->errorResponse("Error en el controlador");
         }
     }

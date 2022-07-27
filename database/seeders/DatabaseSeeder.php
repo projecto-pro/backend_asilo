@@ -28,6 +28,8 @@ use App\Models\MedicoEspecialidad;
 use Illuminate\Support\Facades\DB;
 use App\Imports\DepartamentoImport;
 use App\Models\CajaChica;
+use App\Models\Donacion;
+use App\Models\Entidad;
 use App\Models\MedicinaPresentacion;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\FichaMedicaAntecedente;
@@ -203,5 +205,11 @@ class DatabaseSeeder extends Seeder
 
         CajaChica::factory(1500)->create();
         echo "Ejecutado CajaChica::factory()->create()" . PHP_EOL;
+
+        Entidad::factory(25)->create();
+        echo "Ejecutado Entidad::factory()->create()" . PHP_EOL;
+
+        Donacion::factory(2500)->create();
+        echo "Ejecutado Donacion::factory()->create()" . PHP_EOL;
     }
 }

@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\MedicinaPresentacion;
 use App\Http\Controllers\ApiController;
 use App\Models\Antecedente;
+use App\Models\Donacion;
+use App\Models\Entidad;
 
 class SelectController extends ApiController
 {
@@ -249,6 +251,26 @@ class SelectController extends ApiController
             return $this->showAll($data);
         } catch (\Exception $e) {
             $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@entrega_medicamento_select");
+            return $this->errorResponse('Error en el controlador');
+        }
+    }
+
+    public function donacion_select()
+    {
+        try {
+            return $this->showAll(Donacion::orderBy('id')->get());
+        } catch (\Exception $e) {
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@donacion_select");
+            return $this->errorResponse('Error en el controlador');
+        }
+    }
+
+    public function entidad_select()
+    {
+        try {
+            return $this->showAll(Entidad::orderBy('id')->get());
+        } catch (\Exception $e) {
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@entidad_select");
             return $this->errorResponse('Error en el controlador');
         }
     }

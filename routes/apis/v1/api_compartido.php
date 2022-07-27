@@ -53,6 +53,8 @@ Route::name('select.ingreso_asilo_select')->get('select/ingreso_asilo', 'Catalog
 Route::name('select.antecedente_select')->get('select/antecedente', 'Catalogo\SelectController@antecedente_select');
 Route::name('select.consulta_medica_select')->get('select/consulta_medica', 'Catalogo\SelectController@consulta_medica_select');
 Route::name('select.entrega_medicamento_select')->get('select/entrega_medicamento', 'Catalogo\SelectController@entrega_medicamento_select');
+Route::name('select.donacion_select')->get('select/donacion', 'Catalogo\SelectController@donacion_select');
+Route::name('select.entidad_select')->get('select/entidad', 'Catalogo\SelectController@entidad_select');
 
 
 //rutas para PresentacionController
@@ -109,3 +111,6 @@ Route::resource('ficha_medica_antecedente', 'FichaMedica\FichaMedicaAntecedenteC
 
 //rutas para CajaChicaController
 Route::resource('caja_chica', 'Administracion\CajaChicaController')->only(['index', 'store', 'destroy']);
+
+//rutas para DonacionController
+Route::resource('donacion', 'Administracion\DonacionController')->only(['index', 'store', 'destroy']);
