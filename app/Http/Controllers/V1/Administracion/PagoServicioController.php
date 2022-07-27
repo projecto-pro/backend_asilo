@@ -28,14 +28,15 @@ class PagoServicioController extends ApiController
         }
     }
 
-    public function show($pago_servicio)
+    public function consultar_pendientes($servicio, $anio)
     {
         try {
-            $data = Mes::whereNotExists(function ($query) use ($pago_servicio) {
+            $data = Mes::whereNotExists(function ($query) use ($servicio, $anio) {
                 $query->select(DB::raw(1))
                     ->from('pago_servicio')
                     ->whereRaw('mes.id = pago_servicio.mes_id')
-                    ->where('pago_servicio.anio', $pago_servicio);
+                    ->where('pago_servicio.servicio_id', $servicio)
+                    ->where('pago_servicio.anio', $anio);
             })
                 ->orderBy('id')
                 ->get();

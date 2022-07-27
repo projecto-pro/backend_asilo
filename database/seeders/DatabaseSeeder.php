@@ -5,14 +5,18 @@ namespace Database\Seeders;
 use App\Models\Mes;
 use App\Models\Examen;
 use App\Models\Medico;
+use App\Models\Entidad;
 use App\Models\Usuario;
+use App\Models\Donacion;
 use App\Traits\Utileria;
+use App\Models\CajaChica;
 use App\Models\UsuarioRol;
 use App\Models\Antecedente;
 use App\Models\FichaMedica;
 use App\Models\Laboratorio;
 use App\Models\Tratamiento;
 use App\Models\IngresoAsilo;
+use App\Models\PagoServicio;
 use App\Imports\ExamenImport;
 use App\Imports\RolMenuImport;
 use App\Models\ConsultaMedica;
@@ -26,9 +30,6 @@ use App\Imports\MunicipioImport;
 use App\Models\MedicoEspecialidad;
 use Illuminate\Support\Facades\DB;
 use App\Imports\DepartamentoImport;
-use App\Models\CajaChica;
-use App\Models\Donacion;
-use App\Models\Entidad;
 use App\Models\MedicinaPresentacion;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\FichaMedicaAntecedente;
@@ -208,5 +209,8 @@ class DatabaseSeeder extends Seeder
 
         Donacion::factory(2500)->create();
         echo "Ejecutado Donacion::factory()->create()" . PHP_EOL;
+
+        PagoServicio::factory(2500)->create();
+        echo "Ejecutado PagoServicio::factory()->create()" . PHP_EOL;
     }
 }

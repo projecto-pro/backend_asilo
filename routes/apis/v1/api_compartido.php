@@ -118,4 +118,5 @@ Route::resource('caja_chica', 'Administracion\CajaChicaController')->only(['inde
 Route::resource('donacion', 'Administracion\DonacionController')->only(['index', 'store', 'destroy']);
 
 //rutas para PagoServicioController
-Route::resource('pago_servicio', 'Administracion\PagoServicioController')->only(['index', 'show', 'store', 'destroy']);
+Route::resource('pago_servicio', 'Administracion\PagoServicioController')->only(['index', 'store', 'destroy']);
+Route::name('pago_servicio.consultar_pendientes')->get('pago_servicio/consultar_pendientes/{servicio}/{anio}', 'Administracion\PagoServicioController@consultar_pendientes');

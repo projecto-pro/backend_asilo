@@ -71,16 +71,6 @@ class SelectController extends ApiController
         }
     }
 
-    public function cliente_proveedor_select()
-    {
-        try {
-            return $this->showAll(ClienteProveedor::orderBy('nit')->get());
-        } catch (\Exception $e) {
-            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@cliente_proveedor_select");
-            return $this->errorResponse('Error en el controlador');
-        }
-    }
-
     public function persona_select()
     {
         try {
@@ -291,9 +281,8 @@ class SelectController extends ApiController
     {
         try {
             $anios = array();
-            for ($i = 0; $i < date('Y') + 1; $i) {
-                $data['id'] = 2000 + $i;
-                array_push($anios, $data);
+            for ($i = 2000; $i < date('Y') + 1; $i++) {
+                array_push($anios, $i);
             }
             return $this->successResponse(['data' => $anios]);
         } catch (\Exception $e) {
