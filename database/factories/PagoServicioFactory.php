@@ -27,7 +27,7 @@ class PagoServicioFactory extends Factory
         do {
             $anio = $this->faker->numberBetween(2000, date('Y'));
             $mes_id = Mes::all()->random()->id;
-            $dia = $this->faker->numberBetween(1, $mes_id = 2 ? 28 : 30);
+            $dia = $this->faker->numberBetween(1, $mes_id == 2 ? 28 : 30);
             $servicio = Servicio::all()->random()->id;
         } while (!is_null(PagoServicio::where('servicio_id', $servicio)->where('mes_id', $mes_id)->where('anio', $anio)->first()));
 
