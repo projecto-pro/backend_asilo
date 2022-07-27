@@ -29,11 +29,11 @@ trait ConsultasGlobal
             if (is_null($persona)) {
                 $persona = new Persona();
                 if (isset($request->foto)) {
-                    $persona->foto = $this->saveImage($request->foto, 'persona', $request->cui);
+                    $persona->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'persona', $request->cui);
                 }
             } else {
                 if (isset($request->foto)) {
-                    $persona->foto = $this->saveImage($request->foto, 'persona', $request->cui, $persona->foto);
+                    $persona->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'persona', $request->cui, $persona->foto);
                 }
             }
 
@@ -73,11 +73,11 @@ trait ConsultasGlobal
             if (is_null($persona)) {
                 $persona = new Persona();
                 if (isset($request['foto'])) {
-                    $persona->foto = $this->saveImage($request['foto'], 'persona', $request['cui']);
+                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request->foto : "null", 'persona', $request['cui']);
                 }
             } else {
                 if (isset($request['foto'])) {
-                    $persona->foto = $this->saveImage($request['foto'], 'persona', $request['cui'], $persona->foto);
+                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request->foto : "null", 'persona', $request['cui'], $persona->foto);
                 }
             }
 
@@ -143,26 +143,6 @@ trait ConsultasGlobal
             RolMenu::firstOrCreate(['rol_id' => $rol_id, 'menu_id' => $menu_id]);
             RolMenu::firstOrCreate(['rol_id' => $rol_id, 'menu_id' => $value['id']]);
         }
-    }
-
-    protected function cliente_proveedor(Request $request)
-    {
-        $persona = ClienteProveedor::where('nit', $request->nit)->first();
-        if (is_null($persona)) {
-            $persona = new ClienteProveedor();
-        }
-
-        $persona->nit = $request->nit;
-        $persona->nombre = $request->nombre;
-        $persona->telefonos = $request->telefonos;
-        $persona->emails = $request->emails;
-        $persona->direcciones = $request->direcciones;
-        $persona->departamento_id = Municipio::find($request->municipio_id['id'])->departamento_id;
-        $persona->municipio_id = $request->municipio_id['id'];
-        $persona->usuario_id = Auth::user()->id;
-        $persona->save();
-
-        return $persona;
     }
 
     protected function protegido($paciente)

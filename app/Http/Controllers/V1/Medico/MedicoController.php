@@ -31,7 +31,7 @@ class MedicoController extends ApiController
 
             $medico = new Medico();
             $medico->colegiado = $request->colegiado;
-            $medico->foto = $this->saveImage($request->foto, 'medico', $medico->colegiado);
+            $medico->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'medico', $medico->colegiado);
             $medico->email = $request->email;
             $medico->telefono = $request->telefono;
             $medico->activo = true;
@@ -63,7 +63,7 @@ class MedicoController extends ApiController
             $persona = $this->persona($request->persona);
 
             if (!is_null($request->foto))
-                $medico->foto = $this->saveImage($request->foto, 'medico', $medico->colegiado, $medico->foto);
+                $medico->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'medico', $medico->colegiado, $medico->foto);
 
             $medico->email = $request->email;
             $medico->telefono = $request->telefono;

@@ -23,7 +23,6 @@ use App\Models\SolicitudMedica;
 use App\Traits\ConsultasGlobal;
 use Illuminate\Database\Seeder;
 use App\Imports\MunicipioImport;
-use App\Models\ClienteProveedor;
 use App\Models\MedicoEspecialidad;
 use Illuminate\Support\Facades\DB;
 use App\Imports\DepartamentoImport;
@@ -67,8 +66,6 @@ class DatabaseSeeder extends Seeder
         DB::connection(config('passport.storage.database.connection'))->table('oauth_clients')
             ->where('id', 2)
             ->update(['secret' => 'fb8QYHjGOBKEL4S8CMDNkXW44lSHGmM6lrvoxwO1']);
-
-        ClienteProveedor::factory(7)->create();
 
         Excel::import(new MedicinaImport, 'database/seeders/Catalogos/medicamentos.xlsx');
 

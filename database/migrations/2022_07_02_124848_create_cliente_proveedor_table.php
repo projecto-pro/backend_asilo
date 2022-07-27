@@ -13,7 +13,7 @@ class CreateClienteProveedorTable extends Migration
      */
     public function up()
     {
-        Schema::connection(config('database.default'))->create('cliente_proveedor', function (Blueprint $table) {
+        /*Schema::connection(config('database.default'))->create('cliente_proveedor', function (Blueprint $table) {
             $table->id();
             $table->string('nit', 15)->unique();
 
@@ -31,7 +31,7 @@ class CreateClienteProveedorTable extends Migration
             $table->softDeletes();
 
             $table->index(['nit', 'deleted_at']);
-        });
+        });*/
     }
 
     /**

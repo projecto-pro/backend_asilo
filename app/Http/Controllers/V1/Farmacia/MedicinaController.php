@@ -35,7 +35,7 @@ class MedicinaController extends ApiController
             $medicina->codigo = $this->generadorCodigo('M-', count(Medicina::all()) + 1);
             $medicina->nombre = $request->nombre;
             $medicina->descripcion = $request->descripcion;
-            $medicina->foto = $this->saveImage($request->foto, 'medicina', $medicina->codigo);
+            $medicina->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'medicina', $medicina->codigo);
             $medicina->usuario_id = Auth::user()->id;
             $medicina->save();
 
@@ -51,8 +51,7 @@ class MedicinaController extends ApiController
         try {
             DB::beginTransaction();
 
-            if (!is_null($request->foto))
-                $medicina->foto = $this->saveImage($request->foto, 'medicina', $medicina->codigo, $medicina->foto);
+            $medicina->foto = $this->saveImage(!is_null($request->foto) ? $request->foto : "null", 'medicina', $medicina->codigo, $medicina->foto);
 
             if ($medicina->nombre != $request->nombre) {
                 foreach (MedicinaPresentacion::where('medicina_id', $medicina->id)->get() as $actualizar) {

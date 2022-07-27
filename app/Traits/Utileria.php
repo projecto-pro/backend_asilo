@@ -87,7 +87,7 @@ trait Utileria
             Storage::disk($storage)->exists($eliminar) ? Storage::disk($storage)->delete($eliminar) : null;
 
         $path = null;
-        if (!is_null($imagen)) {
+        if ($imagen != "null") {
             $img = $this->getB64Image($imagen);
             $image = Image::make($img);
             $image->encode('jpg', 70);

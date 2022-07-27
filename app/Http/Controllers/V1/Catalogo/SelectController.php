@@ -20,6 +20,7 @@ use App\Http\Controllers\ApiController;
 use App\Models\Antecedente;
 use App\Models\Donacion;
 use App\Models\Entidad;
+use App\Models\Servicio;
 
 class SelectController extends ApiController
 {
@@ -248,6 +249,7 @@ class SelectController extends ApiController
             })
                 ->orderBy('id')
                 ->get();
+
             return $this->showAll($data);
         } catch (\Exception $e) {
             $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@entrega_medicamento_select");
@@ -271,6 +273,31 @@ class SelectController extends ApiController
             return $this->showAll(Entidad::orderBy('id')->get());
         } catch (\Exception $e) {
             $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@entidad_select");
+            return $this->errorResponse('Error en el controlador');
+        }
+    }
+
+    public function servicio_select()
+    {
+        try {
+            return $this->showAll(Servicio::orderBy('id')->get());
+        } catch (\Exception $e) {
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@servicio_select");
+            return $this->errorResponse('Error en el controlador');
+        }
+    }
+
+    public function anios_select()
+    {
+        try {
+            $anios = array();
+            for ($i = 0; $i < date('Y') + 1; $i) {
+                $data['id'] = 2000 + $i;
+                array_push($anios, $data);
+            }
+            return $this->successResponse(['data' => $anios]);
+        } catch (\Exception $e) {
+            $this->grabarLog($e->getMessage(), "{$this->controlador_principal}@anios_select");
             return $this->errorResponse('Error en el controlador');
         }
     }
