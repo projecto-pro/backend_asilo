@@ -33,7 +33,7 @@ class TratamientoController extends ApiController
             if (!$tratamiento->activo)
                 return $this->errorResponse("El paciente con código {$tratamiento->codigo}, fue dado de bajo. Por tal razón no puede entregar el médicamento recetado.");
 
-            $data = Tratamiento::with('protegido.persona', 'evolucion_medica')->where('realizado', false)->where('protegido_id', $tratamiento->id)->get();
+            $data = Tratamiento::with('protegido.persona', 'evolucion_medica')->where('entregado', false)->where('protegido_id', $tratamiento->id)->get();
             $sumatoria = Tratamiento::where('protegido_id', $tratamiento->id)->where('entregado', true)->sum('total');
             $articulos = Tratamiento::where('protegido_id', $tratamiento->id)->where('entregado', true)->count();
 
