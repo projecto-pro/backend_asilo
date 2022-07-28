@@ -73,11 +73,11 @@ trait ConsultasGlobal
             if (is_null($persona)) {
                 $persona = new Persona();
                 if (isset($request['foto'])) {
-                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request->foto : "null", 'persona', $request['cui']);
+                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request['foto'] : "null", 'persona', $request['cui']);
                 }
             } else {
                 if (isset($request['foto'])) {
-                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request->foto : "null", 'persona', $request['cui'], $persona->foto);
+                    $persona->foto = $this->saveImage(!is_null($request['foto']) ? $request['foto'] : "null", 'persona', $request['cui'], $persona->foto);
                 }
             }
 
